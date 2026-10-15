@@ -2,6 +2,10 @@
   functions = "netlify/functions"
   publish = "dist"
 
+[build.environment]
+  # Vite 生产构建（7000+ 模块、pdfjs-dist 等大依赖）会超出 Node 默认 ~2GB 堆上限
+  NODE_OPTIONS = "--max-old-space-size=6144"
+
 [functions]
   node_bundler = "esbuild"
 
